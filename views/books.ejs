@@ -1,0 +1,51 @@
+<% include partials/header %>
+<style>
+    .search {
+        margin-bottom: 1%;
+        text-align: center;
+    }
+</style>
+ <div class="container">
+        <div class="search">
+                <form action="/books" method="GET" class="form-inline">
+                    <div class="form-group">
+                        <input type="text" name="search" placeholder="sy's Name" class="form-control">
+                        <input type="submit" value="Search" class="btn btn-search">
+                    </div>
+                </form>
+            </div>
+            <%if(noMatch){%>
+            <h1 style="text-align: center;">No Match Found :(</h1>
+            <%}else{%>
+      <div class="row text-center" style="display:flex; flex-wrap: wrap;">
+        <% 
+        sys.sort(function(a,b){
+            return Number(a.bookprice)-Number(b.bookprice);
+        })
+        sys.forEach(function(sy){
+            if(sy.type == "sy"&& sy.description && sy.status=="in stock") {%>
+            <div class="col-md-6 col-sm-6">
+                <div class="thumbnail">
+                   <div class="caption">
+                       <h3><%= sy.name %></h3>
+                   </div>
+            <p style="font-size: 130%;">
+                       <% if(String(sy.description).length > 60) {%>
+                        <%= String(sy.description).slice(0,60) + "..." %>
+                        <%} else{%>
+                        <%= String(sy.description)%>
+                        <%}%>
+                    </p> 
+                    <p style="font-size: 140%;">
+                        Book Price : <%= sy.bookprice %>
+                    </p>
+                   <p>
+                       <a href="/books/<%= sy.id %>" class="btn btn-primary">More Info</a>
+                   </p>
+                </div>
+            </div>
+        <% }}); %>
+    </div>
+</div><%}%>
+
+<% include partials/footer %>

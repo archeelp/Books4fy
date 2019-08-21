@@ -1,0 +1,26 @@
+<% include partials/header %>
+<link href="https://fonts.googleapis.com/css?family=Voces&display=swap" rel="stylesheet">
+<style>
+    .container {
+        border: 1px solid rgba(1,1,1,0.2);
+    }
+    h1 {
+        font-family: 'Voces', cursive;
+    }
+    #btn {
+        font-size: 120;
+    }
+</style>
+<div class="container">
+    <div class="row">
+        <h1 style="text-align: center">End selling your books</h1>
+        <div style="width: 30%; margin: 25px auto;">
+            <form action="/end" method="POST">
+                    <div class="form-group">
+                            <button id="btn" class="btn btn-lg btn-primary btn-block">Confirm</button>
+                        </div>
+            </form>
+        </div>
+    </div>
+</div>
+<% include partials/footer %>

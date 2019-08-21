@@ -1,0 +1,23 @@
+<% include partials/header %>
+<div class="container">   
+        <h1></h1>
+              <div style="padding: 1%;" class="description">
+                  <legend>Name : <%= sy.name %></legend>
+                  <p id="description">Book detail : <%= sy.description %></p>
+              </div>
+            <div>
+                <p id="description">Contact number :<%= sy.contactnumber %></p>
+            </div>
+            <div>
+                    <p id="description">Book Price :<%= sy.bookprice %></p>
+             </div>
+             <div>
+                    <p id="description">Status :<%= sy.status %></p>
+                </div>
+             <% if((!currentuser)||(currentuser.type=="fy")&& sy.status=="in stock") {%>
+                <div>
+                        <a class="btn btn-success" href="/books/<%= sy._id %>/interested">Get Book</a>
+                </div>
+                <% } %>
+    </div>
+<% include partials/footer %>

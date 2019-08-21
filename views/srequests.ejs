@@ -1,0 +1,30 @@
+<% include partials/header %>
+
+<style>
+    fieldset {
+        padding-left: 1%;
+        padding-right: 1%;
+    }
+</style>
+<fieldset>
+        <h3>Appointments Schedule</h3>
+        <table class="table table-borderless" >
+            <tr>
+            <th>Fy Name</th>
+            <th>Contact Number</th>
+            <th>Request Date</th> 
+            <th>Bid Price</th>
+            </tr>
+        <% sy.appointments.reverse();
+        sy.appointments.forEach(function(appointment){ %>
+            <tr>
+                <% var month = appointment.bookingdate.getMonth() +1; %>
+                <td><%= appointment.syname.toUpperCase() %></td>
+                <td><%= appointment.sycn %></td>
+                <td><%= appointment.bookingdate.getDate() + "/" + month + "/" + appointment.bookingdate.getFullYear() %></td> 
+                <td><%= appointment.bidprice %></td>
+            </tr>
+        <% }) %>
+        </table>
+    </fieldset>
+<% include partials/footer %>
